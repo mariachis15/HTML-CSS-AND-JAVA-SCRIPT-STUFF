@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<body>
+    <title> Basic HTML & CSS </title>
+
+    <style>
+        header {
+            background-color: rgb(226, 235, 252);
+            padding: 25px;
+            text-align: center;
+            font-size: 18px;
+            font-style: italic;
+            color: black;
+            border-radius: 8%;
+        }
+
+        section {
+            background-color: rgb(226, 235, 252);
+            padding: 25px;
+            border-radius: 10%;
+        }
+
+        div {
+            background-color: rgb(238, 248, 248);
+            padding: 25px;
+            border-radius: 30%;
+            text-align: center;
+            border-color: black;
+        }
+
+        aside {
+            background-color: rgb(238, 248, 248);
+            padding: 25px;
+            border-radius: 30%;
+            border-color: black;
+        }
+    </style>
+    <header>
+        <img src="picture3.jpg" alt=" Picture " height="110" width="1800">
+        <p> " You don't always need a plan. Sometimes you just need to breathe, trust, let go and see what happens. " —
+            Mandy Hale </p>
+    </header>
+    <p> </p>
+    <section>
+        <div>
+            <a href="https://www.google.ro/">Link 1</a>
+            <a href="https://www.w3schools.com/">Link 2</a>
+            <a href="https://www.instagram.com/">Link 3</a>
+        </div>
+        <p> </p>
+        <aside>
+
+            <a href="https://www.google.ro/">Link 1</a>
+            <a href="https://www.w3schools.com/">Link 2</a>
+            <a href="https://www.instagram.com/">Link 3</a>
+
+        </aside>
+    </section>
+    <footer>
+        <p> NUME PRENUME ... </p>
+
+    </footer>
+</body>

@@ -1,0 +1,72 @@
+<!-- 4. Dezvoltați o pagină web cu facilități JavaScript care definește un text. În 3 componente de tip div
+(existente în pagină) se vor afișa:
+- caracterele care reprezintă litere
+- caracterele care reprezintă cifre
+- textul obținut prin înlocuirea cifrelor cu caracterul * -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FOURTH PAGE</title>
+    <style>
+        .container-letters {
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        .container-numbers {
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        .container-stars {
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        span {
+            font-size: 25px;
+            font-family: 'Times New Roman', Times, serif;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-letters">
+        <span>Letters:</span>
+    </div>
+
+    <div class="container-numbers">
+        <span>Numbers:</span>
+    </div>
+
+    <div class="container-stars">
+        <span>Text with stars:</span>
+    </div>
+
+    <script>
+        var myText = "Today I saw 6 cats and 3 dogs";
+
+        function displayTextInfo(text) {
+            var letters = "";
+            var numbers = "";
+            var stars = "";
+
+            for (var i = 0; i < text.length; i++) {
+                if (/[a-z]/.test(text[i]) || /[A-Z]/.test(text[i])) {
+                    letters += text[i];
+                } else if (/[0-9]/.test(text[i])) {
+                    numbers += text[i];
+                    stars += "*";
+                } else {
+                    stars += text[i];
+                }
+            }
+            document.querySelector(".container-letters").innerHTML += letters;
+            document.querySelector(".container-numbers").innerHTML += numbers;
+            document.querySelector(".container-stars").innerHTML += stars;
+        }
+
+        displayTextInfo(myText);
+    </script>
+</body>
+</html>

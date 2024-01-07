@@ -1,0 +1,52 @@
+<!--4. Dezvoltați o pagină web cu facilități JavaScript care afișează 2 componente de text exclusiv numeric limitat 
+între valorile 100-400. La apăsarea unui buton, un cerc (componentă <div> cu atributul border-radius
+setat corespunzător) se poziționează pe ecran în funcție de valorile scrise în componente (stânga, sus).-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PAGE 4</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+            background-color: powderblue;
+            gap: 10px;
+        }
+
+        #circle {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: plum;
+
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <input id="caseta1" type="number" min="100" max="400" />
+        <input id="caseta2" type="number" min="100" max="400" />
+    </form>
+    <button onclick="drawCircle()">PRESS</button>
+    <div id="circle"></div>
+    <script>
+        function drawCircle() {
+            var x = document.getElementById("caseta1").value;
+            var y = document.getElementById("caseta2").value;
+            var circle = document.getElementById("circle");
+            circle.style.position = "absolute";
+            circle.style.left = x + "px";
+            circle.style.top = y + "px";
+
+        }
+    </script>
+
+</body>
+
+</html>

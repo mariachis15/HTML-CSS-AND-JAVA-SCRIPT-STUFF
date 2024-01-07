@@ -1,0 +1,55 @@
+<!-- 1'. Schimbați culoarea componentei progresiv (setTimeout, setInterval)-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> PAGE 1 </title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+        }
+
+        .myDiv {
+
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="myDiv"> </div>
+    <script>
+        let currentRed = 255;
+        let currentBlue = 0;
+        let intervalId;
+
+        var myDiv = document.querySelector(".myDiv");
+
+        myDiv.addEventListener("mouseover", function () {
+            intervalId = setInterval(changeColorToBlue, 50);
+        });
+
+        function changeColorToBlue() {
+            currentRed -= 5;
+            currentBlue += 5;
+            myDiv.style.backgroundColor = `rgb(${currentRed}, 0, ${currentBlue})`;
+        }
+
+
+        myDiv.addEventListener("mouseout", function () {
+            currentBlue = 0;
+            currentRed = 255;
+            clearInterval(intervalId);
+            myDiv.style.backgroundColor = "rgb(255, 0, 0)";
+        });
+
+    </script>
+</body>
+
+</html>

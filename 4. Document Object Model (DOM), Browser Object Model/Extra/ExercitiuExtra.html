@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+        .container {
+            width: 90vw;
+            height: 90vh;
+        }
+
+        .info {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            border-radius: 5px;
+
+        }
+
+        .timer {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var container = document.querySelector(".container");
+            var info = document.querySelector(".info");
+            var coordinates = document.querySelector(".coordinates");
+            var timer = document.querySelector(".timerValue");
+
+            var resetTimer = function () {
+                timer.innerText = 0;
+            };
+
+            container.addEventListener("click", function (event) {
+                var x = event.clientX;
+                var y = event.clientY;
+
+                var img = document.createElement("img");
+                img.src = "pirat.jpg";
+                img.style.position = "absolute";
+                img.style.left = x + "px";
+                img.style.top = y + "px";
+                container.appendChild(img);
+
+                coordinates.innerText = "(" + x + ", " + y + ")";
+            });
+
+            var countdown = setInterval(function () {
+                var currentValue = parseInt(timer.innerText, 10);
+                if (currentValue < 10) {
+                    timer.innerText = currentValue + 1;
+                } else {
+                    resetTimer();
+                }
+            }, 1000);
+        });
+    </script>
+    <title>Click Coordinates</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="info">Coordonatele ultimului click: <span class="coordinates">-</span></div>
+        <div class="timer">Timer: <span class="timerValue">0</span>s</div>
+    </div>
+</body>
+
+</html>

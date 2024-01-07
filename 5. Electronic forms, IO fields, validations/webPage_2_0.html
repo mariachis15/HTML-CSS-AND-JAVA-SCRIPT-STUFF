@@ -1,0 +1,79 @@
+<!--2. Dezvoltați o pagină web cu facilități JavaScript care permite introducerea unei parole. Gradul de 
+rezistență a parolei la atacuri (lungime, caractere majuscule si minuscule, caractere numerice și 
+speciale) este calculat (1..10) pe masură ce parola este scrisă (evenimente de tastatură) iar utilizatorul este 
+informat in timp real asupra gradului de rezistență calculat prin afisarea valorii numerice.-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PAGE 2</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+            background-color: lightcyan;
+            flex-direction: column;
+        }
+
+        .label-strength {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <form>
+            <label>ENTER YOUR PASSWORD: </label>
+            <input id="password" type="password" name="password" class="password-input"
+                onkeyup="checkPasswordStrength()" />
+            <input type="checkbox" onclick="togglePasswordVisibility()" />show
+        </form>
+    </div>
+    <br>
+    <div>
+        <label class="label-strength">PASSWORD STRENGTH: <span id="strengthValue">0</span>/10</label>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+
+        function checkPasswordStrength() {
+            var password = document.getElementById("password").value;
+            var strength = 0;
+
+            if (password.length >= 8) {
+                strength += 2;
+            }
+            if (password.match(/[a-z]+/)) {
+                strength += 1;
+            }
+            if (password.match(/[A-Z]+/)) {
+                strength += 2;
+            }
+            if (password.match(/[0-9]+/)) {
+                strength += 2;
+            }
+            if (password.match(/[$@#&!]+/)) {
+                strength += 3;
+            }
+
+            document.getElementById("strengthValue").innerText = strength;
+        }
+    </script>
+
+</body>
+
+</html>

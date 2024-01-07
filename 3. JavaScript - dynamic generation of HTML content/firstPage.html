@@ -1,0 +1,58 @@
+<!-- 1. Dezvoltați o pagină web cu facilități JavaScript care obține o referință la o componentă de tip div 
+  existentă în pagină. Folosind referința:
+- modificați culoarea de background a componentei
+- afișați în componentă un text predefinit
+- afișați în componentă un alt element de tip div
+- un text încapsulat într-un tag p
+- o imagine cu referința spre o resursă web -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FIRST PAGE</title>
+    <style>
+        .myDiv {
+            width: 2000px;
+            height: 500px;
+            border: 2px;
+            margin: 30px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="myDiv">
+        <script>
+            var divs = document.getElementsByClassName("myDiv");
+            if (divs.length > 0) {
+                var myDiv = divs[0];
+                myDiv.style.backgroundColor = "blueviolet";
+                myDiv.innerHTML = "BLANK SPACE";
+
+                var yourDiv = document.createElement("div");
+                yourDiv.style.backgroundColor = "white";
+                yourDiv.innerHTML = "ANOTHER DIV";
+                myDiv.appendChild(yourDiv);
+
+                var paragraph = document.createElement("p");
+                paragraph.innerHTML = "PARAGRAPH TEXT";
+                myDiv.appendChild(paragraph);
+
+                var image = document.createElement("img");
+                image.src = "https://upload.wikimedia.org/wikipedia/commons/d/da/Purple_flower_%284764445139%29.jpg";
+                image.width = 400;
+                image.height = 400;
+                image.alt = "PrettyImage";
+                myDiv.appendChild(image);
+
+
+            }
+        </script>
+
+    </div>
+
+</body>
+
+</html>

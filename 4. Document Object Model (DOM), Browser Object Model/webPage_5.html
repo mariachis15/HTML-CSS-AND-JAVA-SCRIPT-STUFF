@@ -1,0 +1,226 @@
+<!-- 5. Dezvoltați o pagină web cu facilități JavaScript care definește un labirint (componente div alăturate,
+dispuse matricial).
+O imagine (a carei dimensiuni ii permit să încapă în labirint) trebuie mutată cu cursorul, de la intrare spre
+ieșire.
+Se afișează în permanență numărul de coliziuni cu pereții labirintului. Se contorizează timpul scurs între
+intrarea în labirint și momentul ieșirii (număr de secunde).
+Aplicația are 2 butoane, Pauza și Restart -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PAGE 5</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(10, 100px);
+            grid-gap: 10px;
+        }
+
+        .path {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            border-radius: 10px;
+        }
+
+        .wall {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            background-color: grey;
+
+        }
+
+        .elapsed-time {
+            margin-top: 15px;
+        }
+
+        .collision {
+            margin-top: 15px;
+        }
+
+        button {
+            width: 100px;
+            height: 40px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            background-color: lightblue;
+            margin-top: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="grid-container" id="grid">
+            <div class="path" id="0_0"></div>
+            <div class="path" id="0_1"></div>
+            <div class="path" id="0_2"></div>
+            <div class="wall" id="0_3"></div>
+            <div class="wall" id="0_4"></div>
+            <div class="wall" id="0_5"></div>
+            <div class="wall" id="0_6"></div>
+            <div class="wall" id="0_7"></div>
+            <div class="path" id="0_8"></div>
+            <div class="path" id="0_9"></div>
+
+
+            <div class="path" id="1_0"></div>
+            <div class="wall" id="1_1"></div>
+            <div class="path" id="1_2"></div>
+            <div class="wall" id="1_3"></div>
+            <div class="wall" id="1_4"></div>
+            <div class="wall" id="1_5"></div>
+            <div class="path" id="1_6"></div>
+            <div class="path" id="1_7"></div>
+            <div class="path" id="1_8"></div>
+            <div class="wall" id="1_9"></div>
+
+            <div class="path" id="2_0"></div>
+            <div class="wall" id="2_1"></div>
+            <div class="path" id="2_2"></div>
+            <div class="path" id="2_3"></div>
+            <div class="path" id="2_4"></div>
+            <div class="wall" id="2_5"></div>
+            <div class="path" id="2_6"></div>
+            <div class="wall" id="2_7"></div>
+            <div class="wall" id="2_8"></div>
+            <div class="wall" id="2_9"></div>
+
+            <div class="path" id="3_0"></div>
+            <div class="wall" id="3_1"></div>
+            <div class="wall" id="3_2"></div>
+            <div class="wall" id="3_3"></div>
+            <div class="path" id="3_4"></div>
+            <div class="wall" id="3_5"></div>
+            <div class="path" id="3_6"></div>
+            <div class="wall" id="3_7"></div>
+            <div class="wall" id="3_8"></div>
+            <div class="wall" id="3_9"></div>
+
+            <div class="path" id="4_0"></div>
+            <div class="wall" id="4_1"></div>
+            <div class="wall" id="4_2"></div>
+            <div class="wall" id="4_3"></div>
+            <div class="path" id="4_4"></div>
+            <div class="wall" id="4_5"></div>
+            <div class="path" id="4_6"></div>
+            <div class="wall" id="4_7"></div>
+            <div class="wall" id="4_8"></div>
+            <div class="wall" id="4_9"></div>
+
+            <div class="path" id="5_0" style="background-image:url('pisica5.jpg')"></div>
+            <div class="wall" id="5_1"></div>
+            <div class="wall" id="5_2"></div>
+            <div class="wall" id="5_3"></div>
+            <div class="path" id="5_4"></div>
+            <div class="path" id="5_5"></div>
+            <div class="path" id="5_6"></div>
+            <div class="wall" id="5_7"></div>
+            <div class="wall" id="5_8"></div>
+            <div class="wall" id="5_9"></div>
+
+
+        </div>
+        <button onclick="stopGame()">STOP</button>
+        <button onclick="restartGame()">RESTART</button>
+        <p class="elapsed-time"></p>
+        <p class="collision"></p>
+
+    </div>
+
+    <script>
+        const gridContainer = document.getElementById('grid');
+        const walls = Array.from(document.querySelectorAll('.wall'));
+        const paths = Array.from(document.querySelectorAll('.path'));
+        let startTime = 0;
+        let stopTime = 0;
+        let elapsedTime = 0;
+        let collisions = 0;
+        let gameIsStoped = false;
+        let lastCell = "5_0";
+
+        paths.forEach(p => console.log(p.id));
+
+        function stopGame() {
+            gameIsStoped = !gameIsStoped;
+        }
+
+        function restartGame() {
+            paths.forEach(path => path.style.backgroundImage = "");
+            document.getElementById("5_0").style.backgroundImage = "url('pisica5.jpg')";
+            lastCell = "5_0";
+            collisions = 0;
+            document.querySelector('.collision').textContent = `Numarul de coliziuni: ${collisions}.`;
+
+        }
+
+        function getX(id) {
+            var parts = id.split("_");
+            return parseInt(parts[0], 10);
+        }
+
+        function getY(id) {
+            var parts = id.split("_");
+            return parseInt(parts[1], 10);
+        }
+
+        paths.forEach(path => {
+            path.addEventListener('mouseover', () => {
+                var isNeighbour = false;
+                if ((Math.abs(getX(lastCell) - getX(path.id)) == 1) && (Math.abs(getY(lastCell) - getY(path.id)) == 0)) {
+                    isNeighbour = true;
+                }
+                if ((Math.abs(getX(lastCell) - getX(path.id)) == 0) && (Math.abs(getY(lastCell) - getY(path.id)) == 1)) {
+                    isNeighbour = true;
+                }
+
+                if (!gameIsStoped && isNeighbour) {
+                    lastCell = path.id;
+                    path.style.backgroundImage = "url('pisica5.jpg')";
+                }
+
+                if (startTime === 0) {
+                    startTime = new Date();
+                }
+                if (path.id == "0_9") {
+                    if (stopTime === 0) {
+                        stopTime = new Date();
+                        elapsedTime = (stopTime - startTime) / 1000;
+                    }
+
+                    document.querySelector('.elapsed-time').textContent = `Toate celulele au fost colorate in ${elapsedTime} secunde.`;
+
+                }
+                walls.forEach(wall => {
+                    wall.addEventListener('mouseover', () => {
+                        collisions = collisions + 1;
+                        document.querySelector('.collision').textContent = `Numarul de coliziuni: ${collisions}.`;
+                    });
+                });
+
+
+            });
+        });
+    </script>
+</body>
+
+</html>

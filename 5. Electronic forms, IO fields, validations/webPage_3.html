@@ -1,0 +1,67 @@
+<!--3. Dezvoltați o pagină web cu facilități JavaScript care afișează două câmpuri pt. introducerea unei date. Se 
+validează datele introduse doar dacă delimitează un interval mai mare de 3 luni.-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PAGE 3</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+            background-color: powderblue;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 120px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <input id="date1" type="date" />
+        <input id="date2" type="date" />
+    </form>
+    <button onclick="checkDates()">CHECK</button>
+    <p class="validation"></p>
+
+    <script>
+        function getDay(date) {
+            var dates = date.split("-");
+            return parseInt(dates[2], 10);
+        }
+        function getMonth(date) {
+            var dates = date.split("-");
+            return parseInt(dates[1], 10);
+        }
+        function getYear(date) {
+            var dates = date.split("-");
+            return parseInt(dates[0], 10);
+        }
+        function checkDates() {
+            var date1 = document.querySelector("#date1").value;
+            var date2 = document.querySelector("#date2").value;
+            if (Math.abs(getMonth(date2) - getMonth(date1)) >= 3 || ((getYear(date2) - getYear(date1)) >= 1)) {
+                document.querySelector(".validation").textContent = "VALID";
+            }
+            else {
+                document.querySelector(".validation").textContent = "NOT VALID";
+            }
+
+
+        }
+    </script>
+
+</body>
+
+</html>

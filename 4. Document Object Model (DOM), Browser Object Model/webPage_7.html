@@ -1,0 +1,111 @@
+<!--7. Dezvoltați o pagină web cu facilități JavaScript care detectează și afișează caracteristicile:
+- host
+- hostname
+- href
+- pathname
+- port
+- protocol
+specifice paginii curente. Să se afișeze numele browserului care a servit la încărcarea paginii.-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PAGE 7</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: lightblue;
+            gap: 10px;
+        }
+
+        input {
+            height: 50px;
+            width: 150px;
+            border-radius: 10px;
+        }
+
+        input,
+        label {
+            font-size: 30px;
+            font-weight: 700;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .property {
+            display: flex;
+            width: 600px;
+        }
+
+        .property label {
+            width: 200px;
+            height: 70px;
+            line-height: 70px;
+        }
+
+        .property input {
+            flex: 1;
+            height: 70px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="property">
+            <label for="browser">Browser:</label>
+            <input type="text" id="browser" readonly>
+        </div>
+        <div class="property">
+            <label for="host">Host:</label>
+            <input type="text" id="host" readonly>
+        </div>
+        <div class="property">
+            <label for="host-name">Host Name:</label>
+            <input type="text" id="host-name" readonly>
+        </div>
+        <div class="property">
+            <label for="href">HRef:</label>
+            <input type="text" id="href" readonly>
+        </div>
+        <div class="property">
+            <label for="path">Path Name:</label>
+            <input type="text" id="path" readonly>
+        </div>
+        <div class="property">
+            <label for="port">Port:</label>
+            <input type="text" id="port" readonly>
+        </div>
+        <div class="property">
+            <label for="protocol">Protocol:</label>
+            <input type="text" id="protocol" readonly>
+        </div>
+    </div>
+
+    <script>
+        if (navigator.userAgent.indexOf("Chrome") !== -1) {
+            document.getElementById("browser").value = "Google Chrome";
+        } else if (navigator.userAgent.indexOf("Firefox") !== -1) {
+            document.getElementById("browser").value = "Mozilla Firefox";
+        } else if (navigator.userAgent.indexOf("Safari") !== -1) {
+            document.getElementById("browser").value = "Apple Safari";
+        } else if (navigator.userAgent.indexOf("Edge") !== -1) {
+            document.getElementById("browser").value = "Microsoft Edge";
+        } else if (navigator.userAgent.indexOf("MSIE") !== -1 || navigator.userAgent.indexOf("Trident/") !== -1) {
+            document.getElementById("browser").value = "Internet Explorer";
+        }
+
+        document.getElementById("host").value = window.location.host;
+        document.getElementById("host-name").value = window.location.hostname;
+        document.getElementById("href").value = window.location.href;
+        document.getElementById("path").value = window.location.pathname;
+        document.getElementById("port").value = window.location.port;
+        document.getElementById("protocol").value = window.location.protocol;
+
+    </script>
+</body>
+
+</html>

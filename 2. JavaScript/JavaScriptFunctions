@@ -1,0 +1,190 @@
+// 1. Să se definească și să se populeze un șir de valori numerice.
+var numbers = [11, 2, 5, 13, 7, 10, 27, 8];
+
+// Să se efectueze:
+// ordonarea crescătoare și descrescătoare a valorilor din șir
+numbers.sort(function (a, b) { return a - b }); //ordonare crescatoare
+numbers.sort(function (a, b) { return b - a }); //ordonare descrescatoare
+
+//eliminarea din șir a valorilor pare
+numbers = numbers.filter(e => e % 2 != 0);
+
+// introducerea în șir a elementelor unui alt șir predefinit
+var array = [1, 6, 5, 12, 18, 31];
+numbers = numbers.concat(array);
+
+//2. Să se definească și să se populeze un șir de valori asociative denumit produse care face corespondența între denumiri (o serie de chei de tip șir de caractere) și prețuri (valori numerice).
+var products = new Map();
+products.set("milk", 5);
+products.set("bread", 2);
+products.set("fish", 15);
+products.set("cookies", 7);
+products.set("tomatoes", 3);
+products.set("ketchup", 6);
+products.set("blueberries", 12);
+
+// Să se:
+// afișeze cheile și valorile din șir prin tipărirea directă
+console.log(products);
+
+// afișeze valorile din șir prin iterarea cheilor
+products.forEach((value, key) => {
+    console.log(`${key}: ${value}`);
+});
+
+// ordoneze produsele după preț și să se afișeze rezultatul
+let productsArray = Array.from(products.entries());
+productsArray.sort(function (a, b) { return a[1] - b[1] });
+products = new Map(productsArray);
+
+products.forEach((value, key) => {
+    console.log(`${key}: ${value}`);
+});
+
+//3. Să se implementeze o clasă JS numită Student:
+class Student {
+    constructor(firstName, lastName, birthDate, grades) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = new Date(birthDate);
+        this.grades = grades || [];
+    }
+
+    //metode
+
+    getAge() {
+        let birthYear = this.birthDate.getFullYear();
+        let actualYear = new Date().getFullYear();
+        var age;
+        age = actualYear - birthYear;
+        return age;
+    }
+
+    getGrades() {
+        return this.grades.join(', ');
+    }
+
+    getAverage() {
+        var sum = 0;
+        for (var i = 0; i < this.grades.length; i++) {
+            sum = sum + i;
+
+        }
+        var average = sum / this.grades.length;
+        return average;
+    }
+
+    insertGrade(newGrade) {
+        this.grades.push(newGrade);
+    }
+
+    //5. Să se completeze clasa cu metode setter pt. atributele nume, prenume și data_nasterii. 
+    setFirstName(firstName) {
+
+        //tratarea exceptiilor date de siruri de caractere cu lungimea mai mică decât 2 sau care conțin caractere numerice;
+        if (firstName.length < 2) {
+            throw new Error('The first name must contains more than 2 characters.');
+        }
+        for (let i = 0; i < firstName.length; i++) {
+            const charCode = firstName.charCodeAt(i);
+            if ((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+                throw new Error('First name must contain only characters.');
+            }
+        }
+        this.firstName = firstName;
+    }
+
+    setLastName(lastName) {
+
+        //tratarea exceptiilor date de siruri de caractere cu lungimea mai mică decât 2 sau care conțin caractere numerice;
+        if (lastName.length < 2) {
+            throw new Error('The last name must contains more than 2 characters.');
+        }
+        for (let i = 0; i < lastName.length; i++) {
+            const charCode = lastName.charCodeAt(i);
+            if ((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+                throw new Error('Last name must contain only characters.');
+            }
+        }
+        this.lastName = lastName;
+    }
+
+    setBirthDate(birthDate) {
+
+        //tratarea exceptiilor date de date de naștere mai recente de 18 ani
+        const eighteenYearsAgo = new Date();
+        eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
+        if (birthDate > eighteenYearsAgo) {
+            throw new Error('The student must be older than 18.');
+        }
+        this.birthDate = birthDate;
+    }
+}
+
+//Să se definească un șir de 3 studenți cu datele predefinite.
+let students = [
+    new Student("Maria", "Chis", "2002-03-15", [10, 9, 10]),
+    new Student("Eusebiu", "Florean", "2001-10-03", [10, 10, 10, 10]),
+    new Student("Sorina", "Lemnean", "1999-06-18", [8, 10, 9, 9])
+];
+
+//Să se ordoneze și să se afișeze studenții:
+//alfabetic, ținând cont de nume și prenume
+function compareByName(a, b) {
+    return (a.firstName + a.lastName).localeCompare(b.firstName + b.lastName);
+}
+
+students.sort(compareByName);
+console.log(students);
+
+//dupa medii
+function compareByGrades(a, b) {
+    let averageA = a.getAverage();
+    let averageB = b.getAverage();
+    return averageA - averageB;
+}
+
+students.sort(compareByGrades);
+console.log(students);
+
+//după vârstă
+function compareByAge(a, b) {
+    let ageA = a.getAge();
+    let ageB = b.getAge();
+    return ageA - ageB;
+}
+
+students.sort(compareByAge);
+console.log(students);
+
+//3'. Se vor adăuga noi valori pt. note și se va re-apela ordonarea după medii.
+students[0].insertGrade(10);
+students[1].insertGrade(9);
+students[2].insertGrade(7);
+
+students.sort(compareByGrades);
+console.log(students);
+
+//3''. Se vor schimba numele anumitor studenți și se va re-apela ordonarea alfabetică.
+students[0].lastName = "Constantin";
+students[2].lastName = "Vlad";
+
+students.sort(compareByName);
+console.log(students);
+
+//3'''. Se vor adăuga noi studenți în listă. Se vor șterge studenți din listă. Se vor afișa noile liste rezultate.
+let newStudents = [
+    new Student("Lorena", "Fabian", "2003-08-24", [7, 8, 10, 9]),
+    new Student("Claudiu", "Olimpus", "1997-01-04", [7, 7, 10, 7]),
+    new Student("Ioana", "Moldovanu", "1998-12-16", [9, 9, 9, 9])
+];
+
+students.push(newStudents);
+students.splice(students[0], 1);
+
+console.log(students);
+
+//4. Să se modifice metodele existente în clasa definită la pct. 3 și să se înlocuiască cu funcții lambda (unde este posibil).
+getAge = () => new Date().getFullYear() - this.birthDate.getFullYear();
+getGrades = () => this.grades.join(', ');
+getAverage = () => this.grades.reduce((sum, grade) => sum + grade, 0) / this.grades.length;

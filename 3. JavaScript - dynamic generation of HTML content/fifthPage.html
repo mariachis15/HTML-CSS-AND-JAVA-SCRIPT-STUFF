@@ -1,0 +1,72 @@
+<!-- 5. Dezvoltați o pagină web cu facilități JavaScript care definește un șir de valori numerice întregi. În 3
+componente de tip div (existente în pagină) se vor afișa:
+- valorile pozitive pare
+- numărul de elemente negative care sunt compuse din mai mult de 2 cifre, urmat de respectivele elemente
+- valorile care reprezintă minime locale (sunt încadrate de valori mai mari) -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FIFTH PAGE</title>
+    <style>
+        .container-positiveEven,
+        .container-negativeMoreThan2Digits,
+        .container-localMinim {
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        span {
+            font-size: 25px;
+            font-family: 'Times New Roman', Times, serif;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-positiveEven">
+        <span>Positive even numbers:</span>
+    </div>
+
+    <div class="container-negativeMoreThan2Digits">
+        <span>Negative numbers with more than 2 digits:</span>
+    </div>
+
+    <div class="container-localMinim">
+        <span>Local minim numbers:</span>
+    </div>
+
+    <script>
+        var numbers = [34, 523, 1, 8, 22, -12, -622, -215, -218,,-3, 66, 81, 44, -5];
+
+        function displayNumericInfo(values) {
+            var positiveEven = "";
+            var negativeMultipleDigits = "";
+            var counter = 0;
+            var localMinim = "";
+
+            for (var i = 0; i < values.length; i++) {
+                if (values[i] > 0 && values[i] % 2 === 0) {
+                    positiveEven += values[i] + " ";
+                }
+
+                if (values[i] < 0 && Math.abs(values[i]) > 9) {
+                    counter++;
+                    negativeMultipleDigits += values[i] + " ";
+                }
+            }
+
+            document.querySelector(".container-positiveEven").innerHTML += positiveEven.trim();
+            document.querySelector(".container-negativeMoreThan2Digits").innerHTML += counter + " numbers:             ";
+            document.querySelector(".container-negativeMoreThan2Digits").innerHTML += negativeMultipleDigits.trim();
+
+        }
+
+        displayNumericInfo(numbers);
+    </script>
+
+</body>
+
+</html>
+

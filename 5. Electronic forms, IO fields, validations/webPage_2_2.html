@@ -1,0 +1,105 @@
+
+<!--2’’. Utilizatorul este informat în timp real asupra gradului de rezistență calculat prin modificarea dimensiunii
+unei componente de tip <div> (rezistență mai mare, dimensiune mai mare)-->
+    <!DOCTYPE html>
+    <html>
+    
+    <head>
+        <title>PAGE 2</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                height: 100vh;
+                background-color: lightcyan;
+                flex-direction: column;
+            }
+    
+            #strengthValue {
+                border: 1px solid black;
+                height: 30px;
+                width: 5px;
+                border-radius: 10px;
+                background-color: white;
+                margin-left: 10px;
+            }
+    
+            .div-strength {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    
+    <body>
+    
+        <div>
+            <form>
+                <label>ENTER YOUR PASSWORD: </label>
+                <input id="password" type="password" name="password" class="password-input"
+                    onkeyup="checkPasswordStrength()" />
+                <input type="checkbox" onclick="togglePasswordVisibility()" />show
+            </form>
+        </div>
+        <br>
+        <div class="div-strength">
+            <label class="label-strength">PASSWORD STRENGTH: </label>
+            <div id="strengthValue"></div>
+        </div>
+    
+        <script>
+            function togglePasswordVisibility() {
+                var passwordInput = document.getElementById("password");
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text";
+                } else {
+                    passwordInput.type = "password";
+                }
+            }
+    
+            function checkPasswordStrength() {
+                var password = document.getElementById("password").value;
+                var strength = document.getElementById("strengthValue");
+    
+                if (password.length == 0) {
+                    strength.style.width = "5px";
+                    strength.style.backgroundColor = ("white");
+                }
+                else {
+                    if (password.length <= 4) {
+                        strength.style.width = "5px";
+                        strength.style.backgroundColor = ("#F60B0B");
+    
+                    }
+                    if (password.length >= 4 && password.match(/[a-z]+/)) {
+                        strength.style.width = "50px";
+                        strength.style.backgroundColor = ("#F6590B");
+    
+                    }
+    
+                    if (password.length >= 4 && password.match(/[a-z]+/) && password.match(/[A-Z]+/)) {
+                        strength.style.width = "100px";
+                        strength.style.backgroundColor = ("#F6A10B");
+    
+                    }
+                    if (password.length >= 4 && password.match(/[a-z]+/) && password.match(/[A-Z]+/) && password.match(/[0-9]+/)) {
+                        strength.style.width = "150px";
+                        strength.style.backgroundColor = ("#F2F60B");
+    
+                    }
+                    if (password.length >= 4 && password.match(/[a-z]+/) && password.match(/[A-Z]+/) && password.match(/[0-9]+/) && password.match(/[$@#&!]+/)) {
+                        strength.style.width = "200px";
+                        strength.style.backgroundColor = ("#59F60B");
+    
+                    }
+                }
+            }
+        </script>
+    
+    </body>
+    
+    </html>

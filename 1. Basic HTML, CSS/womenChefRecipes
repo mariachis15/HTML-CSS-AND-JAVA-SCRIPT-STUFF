@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="womenChef.css">
+    <title> WOMEN CHEF </title>  
+</head>
+<body>
+<div class="principal-section">
+    <div class="recepie1-section">
+        <h2>PUMPKIN PIE</h2>
+        <br></br>
+    <ul>1 (15 ounce) can pumpkin puree</ul>
+
+        <ul>  1 (14 ounce) can Eagle Brand Sweetened Condensed Milk</ul>
+        
+        <ul>   2 large eggs</ul>
+        
+        <ul> 1 teaspoon ground cinnamon</ul>
+        
+        <ul> ½ teaspoon ground ginger</ul>
+        
+        <ul> ½ teaspoon ground nutmeg</ul>
+        
+        <ul>  ½ teaspoon salt</ul>
+         
+        <ul> 1 (9 inch) unbaked pie crust</ul>
+
+
+    </div>
+    <div class="recepie2-section">
+        <h2>PINA COLADA</h2>
+        <br></br>
+     <p>Pie, glorious pie! There are few desserts I love more on this whole planet the pie (other than a good chocolate cake of course!). 
+     I've shared most of my favorite pie recipes with you, including my Grandma's Lemon Chiffon Pie, and Chocolate Cream Pie. </p>
+    </div>
+    <div class="recepie3-section">
+        <h2>SHRIMP PASTA</h2>
+        <br></br>
+     <p>Pie, glorious pie! There are few desserts I love more on this whole planet the pie (other than a good chocolate cake of course!). 
+     I've shared most of my favorite pie recipes with you, including my Grandma's Lemon Chiffon Pie, and Chocolate Cream Pie. </p>
+    </div>
+    <div class="recepie4-section">
+        <h2>PIZZA MARGHERITA</h2>
+        <br></br>
+     <p>Pie, glorious pie! There are few desserts I love more on this whole planet the pie (other than a good chocolate cake of course!). 
+     I've shared most of my favorite pie recipes with you, including my Grandma's Lemon Chiffon Pie, and Chocolate Cream Pie. </p>
+    </div>
+    </div>
+
+    </body>

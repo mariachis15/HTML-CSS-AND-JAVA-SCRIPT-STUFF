@@ -1,0 +1,63 @@
+<!-- 3. Dezvoltați o pagină web cu facilități JavaScript care definește și randează o grilă dreptunghiulară 
+(componente div alăturate, dispuse matricial; dimensiunea grilei este prestabilită). Componentele vor fi 
+colorate diferit în funcție de valorile 0 sau 1 memorate într-o matrice. Pozițiile ocupate de elementele din 
+matrice definesc corespondența cu elementele de pe ecran. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>THIRD PAGE</title>
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 150px);
+      gap: 10px;
+    }
+
+    .grid-item {
+      width: 150px;
+      height: 150px;
+      border: 10px;
+      text-align: center;
+      line-height: 50px;
+      font-size: 20px;
+    }
+
+    .value-0 {
+      background-color: #f89494;
+    }
+
+    .value-1 {
+      background-color: #887bec;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid-container">
+    <script>
+      const matrix = [
+        [1, 0, 0, 0, 1],
+        [0, 1, 1, 1, 1],
+        [0, 0, 1, 1, 0],
+        [1, 0, 1, 0, 1],
+
+
+
+      ];
+      const gridContainer = document.querySelector(".grid-container");
+      matrix.forEach((row, rowIndex) => {
+        row.forEach((value, colIndex) => {
+          const gridItem = document.createElement("div");
+          gridItem.classList.add("grid-item", `value-${value}`);
+          gridItem.textContent = " ";
+          gridContainer.appendChild(gridItem);
+        });
+      });
+
+    </script>
+  </div>
+</body>
+
+</html>

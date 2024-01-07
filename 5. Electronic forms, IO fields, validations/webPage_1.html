@@ -1,0 +1,34 @@
+<!--1. Dezvoltați o pagină web cu facilități JavaScript care afișează un câmp destinat încărcării de fișiere și permite 
+doar selectarea fișierelor de tip imagine (jpeg, png, gif, bmp). Corelați tipul de fișier detectat cu extensia 
+acestuia.-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PAGE 1</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+            background-color: lightcyan;
+
+        }
+
+        input {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <input accept=".jpeg, .png, .gif, .bmp" id="file" name="file" type="file" />
+    </form>
+
+</body>
+
+</html>

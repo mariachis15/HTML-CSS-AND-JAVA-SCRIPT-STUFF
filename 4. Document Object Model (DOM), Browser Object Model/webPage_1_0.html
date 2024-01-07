@@ -1,0 +1,44 @@
+<!-- 1. Dezvoltați o pagină web cu facilități JavaScript care pozitionează la mijlocul ecranului
+o componentă "div" cu latura de 100 de pixeli, umplută cu roșu. Cand mouse-ul se află deasupra componentei,
+aceasta este colorată cu albastru.-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> PAGE 1 </title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+        }
+
+        .myDiv {
+
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="myDiv"> </div>
+    <script>
+        var myDiv = document.querySelector(".myDiv");
+
+        myDiv.addEventListener("mouseover", function () {
+            myDiv.style.backgroundColor = "blue";
+        });
+
+        myDiv.addEventListener("mouseout", function () {
+            myDiv.style.backgroundColor = "red";
+        });
+
+    </script>
+</body>
+
+</html>

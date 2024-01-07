@@ -1,0 +1,14 @@
+// 1. Să se definească și să se populeze un șir de valori numerice.
+var numbers = [11, 2, 5, 13, 7, 10, 27, 8];
+
+// Să se efectueze:
+// ordonarea crescătoare și descrescătoare a valorilor din șir
+numbers.sort(function (a, b) { return a - b }); //ordonare crescatoare
+numbers.sort(function (a, b) { return b - a }); //ordonare descrescatoare
+
+//eliminarea din șir a valorilor pare
+numbers = numbers.filter(e => e % 2 != 0);
+
+// introducerea în șir a elementelor unui alt șir predefinit
+var array = [1, 6, 5, 12, 18, 31];
+numbers = numbers.concat(array);

@@ -1,0 +1,101 @@
+<!--5’. Validați corectitudinea datelor completate pt. câmpurile d (nu poate fi mai mic decât 18 ani), e și f. Afișați 
+erorile detectate printr-un mesaj unic care să reflecte erorile detectate.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PAGE 5</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+            background-color: rgb(204, 200, 245);
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <div>
+            <label>FIRST NAME: </label>
+            <input id="first-name" type="text" required />
+        </div>
+        <br>
+        <div>
+            <label>LAST NAME: </label>
+            <input id="last-name" type="text" required />
+        </div>
+        <br>
+        <div>
+            <label>GENDER: </label>
+            <input type="radio" name="gender" value="male" required />
+            <label for="male">MALE</label>
+            <input type="radio" name="gender" value="female" required />
+            <label for="female">FEMALE</label>
+
+        </div>
+        <br>
+        <div>
+            <label>BIRTH DATE: </label>
+            <input id="birth-date" type="date" required />
+        </div>
+        <br>
+        <div>
+            <label>EMAIL: </label>
+            <input id="email" type="text" required />
+        </div>
+        <br>
+        <div>
+            <label>PHONE NUMBER:</label>
+            <input id="phone-number" type="tel" required />
+        </div>
+        <br>
+        <div>
+            <label>KNOWLEDGE: </label>
+            <input type="checkbox" name="knowledge" value="java" required />
+            <label for="java">JAVA</label>
+            <input type="checkbox" name="knowledge" value="C" required />
+            <label for="C">C</label>
+            <input type="checkbox" name="knowledge" value="C++" required />
+            <label for="C++">C++</label>
+            <input type="checkbox" name="knowledge" value="pyton" required />
+            <label for="pyton">PYTON</label>
+        </div>
+        <br>
+        <div>
+            <label>DETAILS: </label>
+            <input id="details" type="text" required />
+        </div>
+        <br>
+        <button type="submit" onclick="validate()">SUBMIT</button>
+    </form>
+
+    <script>
+        function validate() {
+            var email = document.getElementById("email").value;
+            var emailPattern = /@.*\./;
+            if (!emailPattern.test(email)) {
+                window.alert("Invalid email");
+            }
+
+            var phoneNumberPattern = /^07\d{8}$/;
+            var phoneNumber = document.getElementById("phone-number").value;
+            if (!phoneNumberPattern.test(phoneNumber)) {
+                window.alert("Invalid phone number");
+            }
+
+            var birthDate = document.getElementById("birth-date").value;
+            if (new Date().getFullYear() - new Date(birthDate).getFullYear() < 18 || birthDate === '') {
+                window.alert("Age must be at least 18");
+            }
+        }
+    </script>
+</body>
+
+</html>

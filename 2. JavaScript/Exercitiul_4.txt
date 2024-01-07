@@ -1,0 +1,4 @@
+//4. Să se modifice metodele existente în clasa definită la pct. 3 și să se înlocuiască cu funcții lambda (unde este posibil).
+getAge = () => new Date().getFullYear() - this.birthDate.getFullYear();
+getGrades = () => this.grades.join(', ');
+getAverage = () => this.grades.reduce((sum, grade) => sum + grade, 0) / this.grades.length;

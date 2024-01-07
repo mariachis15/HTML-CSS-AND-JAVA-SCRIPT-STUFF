@@ -1,0 +1,6 @@
+//3''. Se vor schimba numele anumitor studenți și se va re-apela ordonarea alfabetică.
+students[0].lastName = "Constantin";
+students[2].lastName = "Vlad";
+
+students.sort(compareByName);
+console.log(students);

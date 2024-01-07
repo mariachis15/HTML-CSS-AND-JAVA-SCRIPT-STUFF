@@ -1,0 +1,98 @@
+<!--4. Dezvoltați o pagină web cu facilități JavaScript care definește o grilă dreptunghiulară (componente div
+alăturate, dispuse matricial; dimensiunea grilei este prestabilită).
+La trecerea cu mouse-ul peste componente, acestea își schimbă culoarea. Monitorizați și afișați timpul scurs
+până la colorarea tuturor celulelor.-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PAGE 4</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 100px);
+            grid-gap: 10px;
+        }
+
+        .cell {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            border-radius: 10px;
+        }
+
+        .elapsed-time {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="grid-container" id="grid">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <p class="elapsed-time"></p>
+    </div>
+
+    <script>
+        const gridContainer = document.getElementById('grid');
+        const cells = Array.from(document.querySelectorAll('.cell'));
+        let startTime = 0;
+        let stopTime = 0;
+        let elapsedTime = 0;
+
+        cells.forEach(cell => {
+            cell.addEventListener('mouseover', () => {
+                cell.style.backgroundColor = 'rgb(247, 188, 229)';
+                if (startTime === 0) {
+                    startTime = new Date();
+                }
+                if (cells.every(cell => cell.style.backgroundColor === 'rgb(247, 188, 229)')) {
+                    if (stopTime === 0) {
+                        stopTime = new Date();
+                        elapsedTime = (stopTime - startTime) / 1000;
+                    }
+
+                    document.querySelector('.elapsed-time').textContent = `Toate celulele au fost colorate in ${elapsedTime} secunde.`;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+//3. Să se implementeze o clasă JS numită Student:
+class Student {
+    constructor(firstName, lastName, birthDate, grades) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = new Date(birthDate);
+        this.grades = grades || [];
+    }
+
+    //metode
+
+    getAge() {
+        let birthYear = this.birthDate.getFullYear();
+        let actualYear = new Date().getFullYear();
+        var age;
+        age = actualYear - birthYear;
+        return age;
+    }
+
+    getGrades() {
+        return this.grades.join(', ');
+    }
+
+    getAverage() {
+        var sum = 0;
+        for (var i = 0; i < this.grades.length; i++) {
+            sum = sum + i;
+
+        }
+        var average = sum / this.grades.length;
+        return average;
+    }
+
+    insertGrade(newGrade) {
+        this.grades.push(newGrade);
+    }
+}
+
+//Să se definească un șir de 3 studenți cu datele predefinite.
+let students = [
+    new Student("Maria", "Chis", "2002-03-15", [10, 9, 10]),
+    new Student("Eusebiu", "Florean", "2001-10-03", [10, 10, 10, 10]),
+    new Student("Sorina", "Lemnean", "1999-06-18", [8, 10, 9, 9])
+];
+
+//Să se ordoneze și să se afișeze studenții:
+//alfabetic, ținând cont de nume și prenume
+function compareByName(a, b) {
+    return (a.firstName + a.lastName).localeCompare(b.firstName + b.lastName);
+}
+
+students.sort(compareByName);
+console.log(students);
+
+//dupa medii
+function compareByGrades(a, b) {
+    let averageA = a.getAverage();
+    let averageB = b.getAverage();
+    return averageA - averageB;
+}
+
+students.sort(compareByGrades);
+console.log(students);
+
+//după vârstă
+function compareByAge(a, b) {
+    let ageA = a.getAge();
+    let ageB = b.getAge();
+    return ageA - ageB;
+}
+
+students.sort(compareByAge);
+console.log(students);

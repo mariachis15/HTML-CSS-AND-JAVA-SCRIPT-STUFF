@@ -1,0 +1,42 @@
+//5. Să se completeze clasa cu metode setter pt. atributele nume, prenume și data_nasterii. 
+    setFirstName(firstName) {
+
+        //tratarea exceptiilor date de siruri de caractere cu lungimea mai mică decât 2 sau care conțin caractere numerice;
+        if (firstName.length < 2) {
+            throw new Error('The first name must contains more than 2 characters.');
+        }
+        for (let i = 0; i < firstName.length; i++) {
+            const charCode = firstName.charCodeAt(i);
+            if ((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+                throw new Error('First name must contain only characters.');
+            }
+        }
+        this.firstName = firstName;
+    }
+
+    setLastName(lastName) {
+
+        //tratarea exceptiilor date de siruri de caractere cu lungimea mai mică decât 2 sau care conțin caractere numerice;
+        if (lastName.length < 2) {
+            throw new Error('The last name must contains more than 2 characters.');
+        }
+        for (let i = 0; i < lastName.length; i++) {
+            const charCode = lastName.charCodeAt(i);
+            if ((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122)) {
+                throw new Error('Last name must contain only characters.');
+            }
+        }
+        this.lastName = lastName;
+    }
+
+    setBirthDate(birthDate) {
+
+        //tratarea exceptiilor date de date de naștere mai recente de 18 ani
+        const eighteenYearsAgo = new Date();
+        eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
+        if (birthDate > eighteenYearsAgo) {
+            throw new Error('The student must be older than 18.');
+        }
+        this.birthDate = birthDate;
+    }
+}

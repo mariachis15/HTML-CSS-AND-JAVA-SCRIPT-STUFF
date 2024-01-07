@@ -1,0 +1,91 @@
+<!--5. Dezvoltați o pagină web cu facilități JavaScript care implementează un formular electronic cu următoarele 
+câmpuri:
+a. nume (câmp de tip text)
+b. prenume (cîmp de tip text)
+c. sex (câmp de selecție unică (butoane radio sau câmp de tip select))
+d. data nașterii (câmp de tip dată)
+e. adresă de email (câmp de tip text)
+f. număr de telefon
+g. cunoștințe de programare (câmp de selecție multiplă (checkbox-uri sau select))
+h. observații (câmp de tip textarea)
+Toate câmpurile sunt obligatorii și datele nu pot fi trimise către adresa 
+https://helios.utcluj.ro/cosmin/WEB/responders/post_responder.php decât după 
+completarea integrală.-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PAGE 5</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+            background-color: rgb(245, 200, 231);
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <div>
+            <label>FIRST NAME: </label>
+            <input id="first-name" type="text" required />
+        </div>
+        <br>
+        <div>
+            <label>LAST NAME: </label>
+            <input id="last-name" type="text" required />
+        </div>
+        <br>
+        <div>
+            <label>GENDER: </label>
+            <input type="radio" name="gender" value="male" required />
+            <label for="male">MALE</label>
+            <input type="radio" name="gender" value="female" required />
+            <label for="female">FEMALE</label>
+
+        </div>
+        <br>
+        <div>
+            <label>BIRTH DATE: </label>
+            <input id="birth-date" type="date" required />
+        </div>
+        <br>
+        <div>
+            <label>EMAIL: </label>
+            <input id="email" type="text" required />
+        </div>
+        <br>
+        <div>
+            <label>PHONE NUMBER:</label>
+            <input id="phone-number" type="tel" required />
+        </div>
+        <br>
+        <div>
+            <label>KNOWLEDGE: </label>
+            <input type="checkbox" name="knowledge" value="java" required />
+            <label for="java">JAVA</label>
+            <input type="checkbox" name="knowledge" value="C" required />
+            <label for="C">C</label>
+            <input type="checkbox" name="knowledge" value="C++" required />
+            <label for="C++">C++</label>
+            <input type="checkbox" name="knowledge" value="pyton" required />
+            <label for="pyton">PYTON</label>
+        </div>
+        <br>
+        <div>
+            <label>DETAILS: </label>
+            <input id="details" type="text" required />
+        </div>
+        <br>
+        <button type="submit">SUBMIT</button>
+    </form>
+</body>
+
+</html>

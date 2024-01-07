@@ -1,0 +1,59 @@
+<!-- 2. Dezvoltați o pagină web cu facilități JavaScript care desenează, una langa alta, 
+- o serie de componente (10) div colorate cu culori prestabilite
+- o serie de componente (10) div colorate cu culori generate aleator -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SECOND PAGE</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 2px;
+            margin: 3px;
+            display: inline-block;
+            flex-direction: column;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="predefinedColors">
+        <h3> Predefined colored divs </h3>
+        <script>
+            var predefinedColors = ["cyan", "black", "blue", "blueviolet", "yellow", "red", "magenta", "brown", "red", "green"];
+            for (var i = 0; i < predefinedColors.length; i++) {
+                var div = document.createElement("div");
+                div.className = "colored-div predefined";
+                div.style.backgroundColor = predefinedColors[i];
+                document.querySelector(".predefinedColors").appendChild(div);
+            }
+        </script>
+    </div>
+
+    <div class="randomColors">
+        <h3> Random colored divs </h3>
+        <script>
+            function getRandomColor() {
+                var letters = "0123456789ABCDEF";
+                var color = "#";
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            for (var i = 0; i < predefinedColors.length; i++) {
+                var div = document.createElement("div");
+                div.className = "colored-div random";
+                div.style.backgroundColor = getRandomColor();
+                document.querySelector(".randomColors").appendChild(div);
+            }
+        </script>
+    </div>
+
+</body>
+</html>

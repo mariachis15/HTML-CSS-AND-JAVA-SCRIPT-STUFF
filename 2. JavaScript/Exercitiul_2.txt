@@ -1,0 +1,27 @@
+//2. Să se definească și să se populeze un șir de valori asociative denumit produse care face corespondența între denumiri (o serie de chei de tip șir de caractere) și prețuri (valori numerice).
+var products = new Map();
+products.set("milk", 5);
+products.set("bread", 2);
+products.set("fish", 15);
+products.set("cookies", 7);
+products.set("tomatoes", 3);
+products.set("ketchup", 6);
+products.set("blueberries", 12);
+
+// Să se:
+// afișeze cheile și valorile din șir prin tipărirea directă
+console.log(products);
+
+// afișeze valorile din șir prin iterarea cheilor
+products.forEach((value, key) => {
+    console.log(`${key}: ${value}`);
+});
+
+// ordoneze produsele după preț și să se afișeze rezultatul
+let productsArray = Array.from(products.entries());
+productsArray.sort(function (a, b) { return a[1] - b[1] });
+products = new Map(productsArray);
+
+products.forEach((value, key) => {
+    console.log(`${key}: ${value}`);
+});

@@ -1,0 +1,56 @@
+<!--1". Culoarea componentei este închisă/deschisă pe masură ce cursorul mouse-ului se apropie de componentă.-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> PAGE 1 </title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+        }
+
+        .myDiv {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="myDiv" id="div"> </div>
+    <script>
+        let lastDistance = 0;
+        let blue = 255;
+
+        var div = document.querySelector(".myDiv").style.background = `rgb(0, 0, ${blue})`;
+        document.addEventListener("mousemove", function (event) {
+            const mouseX = event.clientX; 
+            const mouseY = event.clientY; 
+            var myDiv = document.getElementById('div');
+            const divX = myDiv.getBoundingClientRect().left;
+            const divY = myDiv.getBoundingClientRect().top;
+            var distance = Math.sqrt((mouseX - divX) ** 2 + (mouseY - divY) ** 2);
+
+            if (distance > lastDistance) {
+                if (blue <= 253) {
+                    blue += 2;
+                }
+            } else {
+                if (blue >= 2) {
+                    blue -= 2;
+                }
+            }
+
+            document.querySelector(".myDiv").style.background = `rgb(0, 0, ${blue})`;
+            lastDistance = distance;
+        });
+
+
+    </script>
+</body>
+
+</html>

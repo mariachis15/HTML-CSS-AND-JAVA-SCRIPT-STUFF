@@ -1,0 +1,7 @@
+//3'. Se vor adăuga noi valori pt. note și se va re-apela ordonarea după medii.
+students[0].insertGrade(10);
+students[1].insertGrade(9);
+students[2].insertGrade(7);
+
+students.sort(compareByGrades);
+console.log(students);

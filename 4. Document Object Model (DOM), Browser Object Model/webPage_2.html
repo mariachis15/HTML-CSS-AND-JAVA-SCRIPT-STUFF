@@ -1,0 +1,56 @@
+<!--2. Dezvoltați o pagină web cu facilități JavaScript care desenează, una langa alta,
+o serie (10) de componente div colorate cu culori prestabilite. Într-o zonă de pe ecran
+se afișează codul culorii deasupra căreia se află mouse-ul. Textul este afișat cu culoarea componentei.-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PAGE 2</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .color-box {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            border-radius: 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="color-container"></div>
+    <div id="color-code"></div>
+
+    <script>
+        const colors = ["#F6190B", "#F6990B", "#F6DD0B", "#88F60B", "#0BF6C8", "#0BD6F6", "#0B4BF6", "#9D0BF6", "#F60B92", "#F60B41"];
+        function generateColorBoxes() {
+            const container = document.getElementById("color-container");
+
+            colors.forEach(color => {
+                const div = document.createElement("div");
+                div.className = "color-box";
+                div.style.backgroundColor = color;
+
+                div.addEventListener("mousemove", () => {
+                    const colorCodeElement = document.getElementById("color-code");
+                    colorCodeElement.textContent = `${color.toUpperCase()}`;
+                    colorCodeElement.style.color = color;
+                });
+
+                container.appendChild(div);
+            });
+        }
+        generateColorBoxes();
+    </script>
+</body>
+
+</html>
